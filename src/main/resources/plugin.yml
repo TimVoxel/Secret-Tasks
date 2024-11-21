@@ -3,3 +3,4 @@ version: '${project.version}'
 main: me.timpixel.secrettasks.SecretTasks
 api-version: '1.21'
 load: STARTUP
+depend: [Five-Lifes]
