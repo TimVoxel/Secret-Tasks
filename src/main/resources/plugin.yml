@@ -1,6 +1,15 @@
 name: Secret-Tasks
 version: '${project.version}'
+author: TimPixel
 main: me.timpixel.secrettasks.SecretTasks
 api-version: '1.21'
-load: STARTUP
+load: POSTWORLD
 depend: [Five-Lifes]
+commands:
+  tasks:
+    usage: /<command>
+    permission: life.admin
+    description: manages task-related things
+  task:
+    usage: /<command>
+    description: manages individually-assigned task actions

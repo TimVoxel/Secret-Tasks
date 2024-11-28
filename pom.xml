@@ -40,6 +40,14 @@
           </execution>
         </executions>
       </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+            <outputDirectory>C:/Development/Misc/Five lifes SMP/Server1/plugins</outputDirectory>
+        </configuration>
+    </plugin>
     </plugins>
     <resources>
       <resource>
@@ -66,6 +74,13 @@
           <artifactId>paper-api</artifactId>
           <version>1.21-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>me.timpixel.fivelifes</groupId>
+          <artifactId>Five-Lifes</artifactId>
+          <version>3.2.1</version>
+          <scope>system</scope>
+          <systemPath>C:/Development/Misc/Five lifes SMP/Five Lifes/target/Five-Lifes-1.0-SNAPSHOT-shaded.jar</systemPath>
       </dependency>
   </dependencies>
 </project>
