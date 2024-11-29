@@ -1,5 +1,6 @@
 package me.timpixel.secrettasks;
 
+import me.timpixel.fivelifes.FiveLifes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
@@ -49,7 +50,7 @@ public class TaskMeta {
             do {
                 int playerIndex = random.nextInt(0, onlinePlayers.size());
                 player = onlinePlayers.get(playerIndex);
-            } while (usedUUIDs.contains(player.getUniqueId()));
+            } while (usedUUIDs.contains(player.getUniqueId()) || FiveLifes.getLifeBase().get(player) == 0);
 
             usedUUIDs.add(player.getUniqueId());
             bakedText = bakedText.replaceFirst("<>", player.getName());
