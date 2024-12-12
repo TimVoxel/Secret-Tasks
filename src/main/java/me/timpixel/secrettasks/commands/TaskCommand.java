@@ -14,11 +14,12 @@ public class TaskCommand extends RootCommand {
 
     @Override
     protected SubCommand[] getSubCommands() {
-        SubCommand[] commands = new SubCommand[4];
+        SubCommand[] commands = new SubCommand[5];
         commands[0] = new TaskGetCommand(this);
         commands[1] = new TaskRerollCommand(this);
         commands[2] = new TaskFailCommand(this);
         commands[3] = new TaskCompleteCommand(this);
+        commands[4] = new TaskUnassignCommand(this);
         return commands;
     }
 

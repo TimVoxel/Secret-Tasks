@@ -18,11 +18,12 @@ public class TasksCommand extends RootCommand {
 
     @Override
     protected SubCommand[] getSubCommands() {
-        SubCommand[] commands = new SubCommand[4];
+        SubCommand[] commands = new SubCommand[5];
         commands[0] = new SaveTasksCommand(this);
         commands[1] = new FormatTasksCommand(this);
         commands[2] = new LoadTasksCommand(this);
         commands[3] = new PrintTasksCommand(this);
+        commands[4] = new ResetTasksCommand(this);
         return commands;
     }
 

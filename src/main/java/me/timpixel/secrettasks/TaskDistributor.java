@@ -109,6 +109,13 @@ public class TaskDistributor implements SessionListener, LifeBaseListener {
         return TaskAssignmentResult.Successful;
     }
 
+
+    public void unassignTask(UUID playerId) {
+        taskDistribution.remove(playerId);
+        taskCompletionMap.remove(playerId);
+        save();
+    }
+
     @SuppressWarnings("unchecked")
     public void save()  {
 
@@ -138,6 +145,24 @@ public class TaskDistributor implements SessionListener, LifeBaseListener {
                 SecretTasks.log(Level.SEVERE, e.getMessage());
             }
         }).start();
+    }
+
+    public boolean resetDistribution() {
+        File distribution = new File(SecretTasks.getTasksSaveFile(), "distribution.json");
+        boolean result = false;
+
+        if (distribution.exists())
+            try {
+                result = distribution.delete();
+            }
+            catch (SecurityException exception) {
+                SecretTasks.log(Level.SEVERE, exception.getMessage());
+            }
+        
+        if (result)
+            taskDistribution.clear();
+        
+        return result;
     }
 
     @SuppressWarnings("unchecked")

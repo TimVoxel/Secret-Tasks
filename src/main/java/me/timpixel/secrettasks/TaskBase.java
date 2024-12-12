@@ -129,6 +129,24 @@ public class TaskBase {
         }
     }
 
+    public boolean resetUsedTasks() {
+        File file = new File(SecretTasks.getTasksSaveFile(), "usedTasks.json");
+        boolean result = false;
+
+        if (file.exists())
+            try {
+                result = file.delete();
+            }
+            catch (SecurityException exception) {
+                SecretTasks.log(Level.SEVERE, exception.getMessage());
+            }
+
+        if (result)
+            usedTaskIds.clear();
+
+        return result;
+    }
+
     public void print() {
         for (TaskMeta task : tasks) {
             SecretTasks.log(Level.INFO, "Task (id: " + task.getId().toString() + ")");
