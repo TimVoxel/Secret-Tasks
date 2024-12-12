@@ -8,6 +8,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -114,7 +115,14 @@ public class BookGiver implements TaskListener, Listener {
         meta.getPersistentDataContainer().set(bookKey, PersistentDataType.BOOLEAN, true);
 
         itemStack.setItemMeta(meta);
-        player.getInventory().addItem(itemStack);
+
+        if (player.getInventory().firstEmpty() == -1)
+        {
+            Item item = player.getWorld().dropItem(player.getLocation(), itemStack);
+            item.setOwner(player.getUniqueId());
+        }
+        else
+            player.getInventory().addItem(itemStack);
     }
 
     @Override
